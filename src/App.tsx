@@ -11,14 +11,8 @@ const App = () => {
         {data.map((item) => (
           <>
             <Card
-              key={item.id}
-              img={item.img.src}
-              alt={item.img.alt}
-              location={item.country}
-              content={item.text}
-              heading={item.title}
-              date={item.dates}
-              link={item.googleMapsLink}
+            key={item.id}
+              {...item}
             />
             <HorizontalLine className="mt-8" />
           </>

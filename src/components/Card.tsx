@@ -1,31 +1,34 @@
 import { FaLocationDot } from "react-icons/fa6";
 
 interface ICard {
-  location: string;
-  img: string;
-  date: string;
-  heading: string;
-  content: string;
-  alt: string;
-  link: string;
+  id?: number;
+  img: {
+    src: string;
+    alt: string;
+  };
+  title: string;
+  country: string;
+  googleMapsLink: string;
+  dates: string;
+  text: string;
 }
+
 const Card: React.FC<ICard> = ({
-  location,
+  country,
   img,
-  alt,
-  date,
-  heading,
-  content,
-  link,
+  dates,
+  title,
+  text,
+  googleMapsLink,
 }) => {
   return (
     <div className="co flex md:flex-row flex-col-reverse justify-center mt-12 gap-10  ">
       <div className="left flex justify-center items-center  ">
         <div className="image overflow-hidden rounded-xl max-w-[95%] p-2 md:max-w-[210px] shrink-0">
           <img
-            src={img}
+            src={img.src}
             className="object-cover w-full h-full rounded-xl md:w-auto md:h-auto md:aspect-[10/16]  "
-            alt={alt}
+            alt={img.alt}
           />
         </div>
       </div>
@@ -36,11 +39,11 @@ const Card: React.FC<ICard> = ({
               <span>
                 <FaLocationDot className="text-[#F5595A]" />
               </span>{" "}
-              {location}
+              {country}
             </div>
             <a
               className="hover:underline ml-14 text-[#928E9B]"
-              href={link}
+              href={googleMapsLink}
               target="_blank"
             >
               {" "}
@@ -49,10 +52,10 @@ const Card: React.FC<ICard> = ({
           </div>
           <div>
             <h1 className="text-[5vh] md:text-[2vw] font-[800] mt-4">
-              {heading}
+              {title}
             </h1>
-            <p className="mt-3 font-[700]">{date}</p>
-            <p className="mt-8">{content}</p>
+            <p className="mt-3 font-[700]">{dates}</p>
+            <p className="mt-8">{text}</p>
           </div>
         </div>
       </div>
